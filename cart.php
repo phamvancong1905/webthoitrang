@@ -159,7 +159,7 @@
                                 $sl = 0;
                                 $get_cat = $ct->get_Cart();
                                 if($get_cat){
-                                //tiền cộng theo hànghàng    
+                                    
                                     while ($result = $get_cat->fetch_assoc()) {
                                             
                            
@@ -170,7 +170,7 @@
                                         <h5><?php echo $result['productName']?> </h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        <?php echo ''.$fm->format_currency($result['price'])?>VND
+                                        <?php echo '$'.$fm->format_currency($result['price'])?> 
                                     </td>
                                     <td class="shoping__cart__price">
                                          <?php echo $result['size']?> 
@@ -191,9 +191,9 @@
 
                                     <td class="shoping__cart__total">
                                         <?php $total= $result['price'] * $result['quantity'];                               
-                                    echo ''.$fm->format_currency($total);
+                                    echo '$'.$fm->format_currency($total);
                                     $sl +=$result['quantity'];
-                                    ?>VND
+                                    ?>
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <!-- <span class="icon_close"></span> -->
@@ -201,7 +201,6 @@
                                     </td>
                                 </tr>
                             <?php 
-                            //tiền cộng tiềntiền
                             $sub_total += $total;
                             }
 
@@ -239,9 +238,9 @@
                         <ul>
                             <li>Tổng Phụ <span><?php  
                                     
-                                    echo ''.$fm->format_currency($sub_total);
+                                    echo '$'.$fm->format_currency($sub_total);
                                     
-                                ?>VND</span></li>
+                                ?></span></li>
                             <?php 
                                     $discount = $ct->get_Discount($code);
                                     if($discount){
@@ -255,9 +254,9 @@
 
                                 <span><?php echo $result['discount']."%"?>(<?php 
                                         $a =($result['discount']*$sub_total)/100;
-                                        echo ''.$fm->format_currency($a);
+                                        echo '$'.$fm->format_currency($a);
 
-                                  ?>VND)</span>
+                                  ?>)</span>
                                 <?php 
                                     if($result['code']!=""){
 
@@ -268,13 +267,13 @@
                                 } ?>
                             </li>
 
-                            <li>Tổng Tiền <span><?php  
-                                    //
+                            <li>Total <span><?php  
+                                    
                                      $alltotal= ($sub_total - $a);
-                                     echo ''.$fm->format_currency($alltotal);
+                                     echo '$'.$fm->format_currency($alltotal);
                                     Session::set('qtt',$sl);
                                     Session::set('total',$alltotal);
-                                ?>VND</td></span></li>
+                                ?></td></span></li>
                                 <?php 
                             
                             }
@@ -282,13 +281,13 @@
                                     }else{
                                      ?>
                                          
-                                    <li>Tổng Tiền <span><?php  
+                                    <li>Total <span><?php  
                                     
                                     $alltotal= ($sub_total - $a);
-                                    echo ''.$fm->format_currency($alltotal);
+                                    echo '$'.$fm->format_currency($alltotal);
                                     Session::set('qtt',$sl);
                                     Session::set('total',$alltotal);
-                                ?>VND</td></span></li>
+                                ?></td></span></li>
                                    <?php  
                                    }
                                    ?> 
